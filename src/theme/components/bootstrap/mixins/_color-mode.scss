@@ -1,7 +1,0 @@
-// scss-docs-start color-mode-mixin
-@mixin color-mode($mode: light, $root: false) {
-  :root.dark & {
-    @content;
-  }
-}
-// scss-docs-end color-mode-mixin
