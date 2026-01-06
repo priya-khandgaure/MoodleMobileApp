@@ -1,0 +1,121 @@
+:host {
+    ion-tabs {
+        --menutabbar-size: var(--bottom-tabs-size);
+    }
+
+    ion-tabs.placement-side {
+        --menutabbar-size: var(--side-tabs-size);
+    }
+
+    --network-margin-bottom: 0px;
+    --network-message-background: transparent;
+    --network-message-offline: none;
+    --network-message-online: none;
+    --network-message-height: 16px;
+}
+
+:host-context(.core-online),
+:host-context(.core-offline) {
+    .core-network-message {
+        visibility: visible;
+        height: var(--network-message-height);
+        line-height: var(--network-message-height);
+        padding-bottom: calc(var(--ion-safe-area-bottom, 0px) + var(--network-message-height));
+    }
+}
+
+:host-context(.core-online) {
+    --network-margin-bottom: 8px;
+    --network-message-background: var(--success);
+}
+
+:host-context(.core-offline) {
+    --network-margin-bottom: 8px;
+    --network-message-background: var(--danger);
+}
+
+core-user-menu-button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+ion-tab-bar.mainmenu-tabs {
+    background: linear-gradient(90deg, #5735BD, #B42FC5);
+    padding: 10px 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+ion-tab-button {
+    background: none;
+    color: white;
+    border-radius: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    padding: 10px;
+    margin: 0 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    width: 60px;
+    height: 60px;
+
+    ion-icon.core-tab-icon {
+        font-size: 28px;
+        color: white; /* Default icon color */
+    }
+
+    ion-badge.core-tab-badge {
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 6px 8px;
+        line-height: 14px;
+        background-color: #ff3e3e;
+        color: #fff;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+    }
+
+    ion-tab-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+    &.tab-selected {
+        background: #FAF9F6;
+        color: #805BFF;
+
+        ion-icon.core-tab-icon {
+            color: #805BFF;
+        }
+    }
+}
+
+.core-network-message {
+    background: var(--network-message-background);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    visibility: hidden;
+    height: 0;
+    transition: all 500ms ease-in-out;
+    opacity: 0.8;
+    z-index: 12;
+    font-size: var(--mdl-typography-body-font-sm);
+}
+
+.core-network-message .core-online-message {
+    display: var(--network-message-online);
+}
+
+.core-network-message .core-offline-message {
+    display: var(--network-message-offline);
+}

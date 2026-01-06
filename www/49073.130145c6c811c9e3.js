@@ -1,0 +1,2 @@
+/*! For license information please see 49073.130145c6c811c9e3.js.LICENSE.txt */
+"use strict";(self.webpackChunkapp=self.webpackChunkapp||[]).push([[49073],{49073:(e,s,c)=>{c.r(s),c.d(s,{ion_segment_content:()=>n});var t=c(96317);const n=class{constructor(e){(0,t.r)(this,e)}render(){return(0,t.h)(t.e,{key:"64b3965b14c749e77e9ce13b59f349d971e245c8"},(0,t.h)("slot",{key:"2d0bed34f9bc93f92e713cb51e42220f3cecd8f5"}))}};n.style=":host{scroll-snap-align:center;scroll-snap-stop:always;-ms-flex-negative:0;flex-shrink:0;width:100%}"}}]);

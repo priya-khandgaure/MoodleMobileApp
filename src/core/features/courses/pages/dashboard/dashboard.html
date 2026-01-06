@@ -1,0 +1,149 @@
+<core-navbar-buttons slot="end" prepend>
+    <ion-button *ngIf="searchEnabled" (click)="openSearch()" [ariaLabel]="'core.courses.searchcourses' | translate">
+        <ion-icon name="fas-magnifying-glass" slot="icon-only" aria-hidden="true" />
+    </ion-button>
+</core-navbar-buttons>
+
+<ion-content>
+    <!-- Pull-to-refresh -->
+    <ion-refresher slot="fixed" [disabled]="!loaded" (ionRefresh)="refreshDashboard($event.target)">
+        <ion-refresher-content pullingText="{{ 'core.pulltorefresh' | translate }}"></ion-refresher-content>
+    </ion-refresher>
+
+    <!-- Main Content Container -->
+    <div class="phone-container">
+       <h2 class="header-title">Ready to Pick Up Where You Left!</h2>
+        <!-- AI Tutor Card -->
+        <div class="ai-card">
+            <div class="ai-card-content">
+                <div class="text-container">
+                    <h3>Learn with AI Tutor</h3>
+                    <p>Smarter learning begins here.</p>
+                    <!-- <a class="btn" href="#">Learn with AI</a> -->
+                    <a class="btn" (click)="showAiComingSoon()"> Learn with AI </a>
+                </div>
+                <div><img src="assets/img/learner.png" alt="AI Tutor" class="ai-card-image" /></div>
+            </div>
+        </div>
+
+        <!-- Active Courses Section -->
+        <div class="section-title">Active Courses</div>
+            <div class="slider-container" id="courseSlider">
+                <div class="course-card" *ngFor="let course of activeCourses" (click)="openCourse(course)">
+                    <!-- First section: Background image -->
+                    <div class="course-image-section">
+                        <img *ngIf="course.imageUrl" [src]="course.imageUrl" alt="Course Image" class="course-image" />
+                    </div>
+
+                    <!-- Second section: Course details on a white background -->
+                    <div class="course-details-section">
+                        <div class="course-category">{{ course.categoryname || 'Web & App Development' }}</div>
+                        <div class="course-title">{{ course.shortname }}</div>
+
+                        <div class="course-info">
+                            <!-- User images and rating in the same row -->
+                           <div class="course-users" *ngIf="courseParticipants[course.id]?.length">
+                                <img
+                                    *ngFor="let user of courseParticipants[course.id] | slice:0:3"
+                                    [src]="user.profileimageurl"
+                                    [alt]="user.fullname"
+                                    core-external-content
+                                />
+                                <span *ngIf="courseParticipants[course.id].length > 3">
+                                    +{{ courseParticipants[course.id].length - 3 }}
+                                </span>
+                            </div>
+                            <div class="course-rating">
+                                <ion-icon class="star" name="star"></ion-icon>
+                                <ion-icon class="star" name="star"></ion-icon>
+                                <ion-icon class="star" name="star"></ion-icon>
+                                4.8
+                            </div>
+                        </div>
+
+                        <a class="btn" (click)="openCourse(course)">Know More</a>
+                    </div>
+                </div>
+            </div>
+        <!-- Loading Placeholder -->
+        <core-loading [hideUntil]="loaded" placeholderType="column" placeholderHeight="96px">
+            <ion-list class="list-item-limited-width" *ngIf="hasMainBlocks">
+                <!-- XP Leaderboard Section -->
+                <div class="section-title">XP Leaderboard</div>
+                <ion-card class="xp-leaderboard-card">
+
+                        <!-- Course Dropdown -->
+                        <ion-item class="course-select">
+                            <ion-label>Course</ion-label>
+                            <ion-select [(ngModel)]="selectedCourseId" (ionChange)="loadLeaderboard()">
+                                <ion-select-option *ngFor="let course of courses" [value]="course.id">
+                                    {{ course.fullname }}
+                                </ion-select-option>
+                            </ion-select>
+                        </ion-item>
+
+                        <!-- Leaderboard List -->
+                        <ng-container *ngIf="leaderboard?.length; else noLeaderboard">
+                            <ion-list class="leaderboard-list">
+                                <ion-item *ngFor="let entry of leaderboard; let i = index" lines="none">
+                                    <ion-avatar slot="start">
+                                        <ion-icon name="person-circle-outline"></ion-icon>
+                                    </ion-avatar>
+
+                                    <ion-label>
+                                        <h3>{{ entry.username }}</h3>
+                                        <p>XP: {{ entry.xp }}</p>
+                                    </ion-label>
+
+                                    <ion-badge [color]="getRankColor(i + 1)" slot="end">
+                                        #{{ entry.rank }}
+                                    </ion-badge>
+                                </ion-item>
+                            </ion-list>
+                        </ng-container>
+
+                        <!-- No Leaderboard Data -->
+                        <ng-template #noLeaderboard>
+                            <div class="no-data">
+                                <ion-icon name="alert-circle-outline"></ion-icon>
+                                <p>No leaderboard data available.</p>
+                            </div>
+                        </ng-template>
+
+                </ion-card>
+
+                <!-- Badges Section -->
+                <div class="section-title">My Badges</div>
+                <ion-card-content *ngIf="hasBadges">
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="4" *ngFor="let badge of badges">
+                                    <img style="width: 70%;" [src]="badge.fixedImageUrl" core-external-content [alt]="badge.name" />
+                                    <p class="ion-text-wrap">{{ badge.name }}</p>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                </ion-card-content>
+
+                <!-- No Badges -->
+                <ion-card *ngIf="!hasBadges">
+                    <ion-card-content>
+                        <div class="no-data">
+                            <ion-icon name="ribbon-outline"></ion-icon>
+                            <p>No badges earned yet.</p>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+
+                <!-- Additional Blocks -->
+                <ng-container *ngFor="let block of blocks">
+                    <core-block *ngIf="block.visible" [block]="block" contextLevel="user" [instanceId]="userId" />
+                </ng-container>
+            </ion-list>
+
+            <!-- Fixed Side Block Button -->
+            <core-block-side-blocks-button slot="fixed" *ngIf="hasSideBlocks" contextLevel="user" [instanceId]="userId" />
+            <core-empty-box *ngIf="!hasMainBlocks" icon="fas-cubes" [message]="'core.course.nocontentavailable' | translate" />
+        </core-loading>
+    </div>
+</ion-content>

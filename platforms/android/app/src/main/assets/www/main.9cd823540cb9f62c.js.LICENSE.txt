@@ -1,0 +1,19 @@
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+
+/*!
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+/*!__STENCIL_STATIC_IMPORT_SWITCH__*/
+
+/**
+ * @license Angular v17.3.12
+ * (c) 2010-2024 Google LLC. https://angular.io/
+ * License: MIT
+ */

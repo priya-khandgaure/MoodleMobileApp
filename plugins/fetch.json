@@ -1,0 +1,260 @@
+{
+  "@moodlehq/cordova-plugin-advanced-http": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-advanced-http@3.3.1-moodle.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROIDBLACKLISTSECURESOCKETPROTOCOLS": "SSLv3,TLSv1"
+    }
+  },
+  "cordova-plugin-file": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-file@>=2.0.0"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-camera": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-camera@7.0.0-moodle.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROIDX_CORE_VERSION": "1.6.+"
+    }
+  },
+  "@moodlehq/cordova-plugin-file-opener": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-file-opener@4.0.0-moodle.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-file-transfer": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-file-transfer@2.0.0-moodle.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-inappbrowser": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-inappbrowser@6.0.0-moodle.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-intent": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-intent@2.2.0-moodle.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-ionic-webview": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-ionic-webview@5.0.0-moodle.5"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-media-capture": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-media-capture@5.0.0-moodle.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-qrscanner": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-qrscanner@3.0.1-moodle.5"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-statusbar": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-statusbar@4.0.0-moodle.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/cordova-plugin-zip": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/cordova-plugin-zip@3.1.0-moodle.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "@moodlehq/phonegap-plugin-push": {
+    "source": {
+      "type": "registry",
+      "id": "@moodlehq/phonegap-plugin-push@4.0.0-moodle.10"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROIDX_CORE_VERSION": "1.6.+",
+      "FCM_VERSION": "23.+",
+      "IOS_FIREBASE_MESSAGING_VERSION": "~> 10.23.0"
+    }
+  },
+  "cordova-clipboard": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-clipboard@1.3.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-androidx-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-androidx-adapter@1.1.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-badge": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-badge@0.8.9"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-chooser": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-chooser@1.3.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-customurlscheme": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-customurlscheme@5.0.2"
+    },
+    "is_top_level": true,
+    "variables": {
+      "URL_SCHEME": "moodlemobile",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/"
+    }
+  },
+  "cordova-plugin-device": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-device@2.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ionic-keyboard": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-keyboard@2.2.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-local-notification": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-local-notification@1.0.0"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROID_SUPPORT_V4_VERSION": "26.+"
+    }
+  },
+  "cordova-plugin-moodleapp": {
+    "source": {
+      "type": "registry",
+      "id": "file:cordova-plugin-moodleapp"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROIDX_VERSION": "1.0.0",
+      "ANDROIDX_APPCOMPAT_VERSION": "1.3.1"
+    }
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-network-information@3.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-prevent-override": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-prevent-override@1.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-screen-orientation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-screen-orientation@3.0.4"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "es6-promise-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "es6-promise-plugin@^4.1.0"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-wkuserscript": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-wkuserscript@1.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-wkwebview-cookies": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-wkwebview-cookies@1.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage@6.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "nl.kingsquare.cordova.background-audio": {
+    "source": {
+      "type": "registry",
+      "id": "nl.kingsquare.cordova.background-audio@1.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

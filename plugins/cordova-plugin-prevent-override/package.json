@@ -1,0 +1,28 @@
+{
+  "name": "cordova-plugin-prevent-override",
+  "version": "1.0.1",
+  "description": "Cordova Prevent Override Plugin",
+  "cordova": {
+    "id": "cordova-plugin-prevent-override",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": "github:moodlemobile/cordova-plugin-prevent-override#main",
+  "homepage": "https://github.com/moodlemobile/cordova-plugin-prevent-override/tree/main#readme",
+  "bugs": "https://github.com/moodlemobile/cordova-plugin-prevent-override/issues",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": {
+    "cordovaDependencies": {
+      "3.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "author": "Moodle Pty Ltd",
+  "license": "Apache-2.0"
+}

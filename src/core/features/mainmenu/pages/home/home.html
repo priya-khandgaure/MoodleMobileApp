@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [text]="'core.back' | translate" />
+        </ion-buttons>
+        <!-- <ion-title>
+            <h1>
+                <core-site-logo logoType="top" />
+            </h1>
+        </ion-title> -->
+        <div class="welcome-section">
+            <h2>{{ siteInfo?.sitename || 'Beyondkey LMS' }}</h2>
+            <p class="item-greeting">Welcome back, {{ fullname }}!</p>
+        </div>
+        <ion-buttons slot="end">
+            <core-user-menu-button />
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<core-loading [hideUntil]="loaded">
+    <core-empty-box *ngIf="tabs.length === 0" icon="fas-house" [message]="'core.courses.nocourses' | translate" />
+</core-loading>
+<core-tabs-outlet *ngIf="tabs.length > 0" [hideUntil]="loaded" [tabs]="tabs" (ionChange)="tabSelected()" />

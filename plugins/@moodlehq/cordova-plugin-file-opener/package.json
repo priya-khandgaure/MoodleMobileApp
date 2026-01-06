@@ -1,0 +1,46 @@
+{
+  "name": "@moodlehq/cordova-plugin-file-opener",
+  "version": "4.0.0-moodle.1",
+  "description": "Moodle's fork of a File Opener Plugin for Cordova.",
+  "cordova": {
+    "id": "@moodlehq/cordova-plugin-file-opener",
+    "platforms": [
+      "android",
+      "ios",
+      "windows",
+      "electron"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moodlemobile/cordova-plugin-file-opener.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows",
+    "cordova-electron"
+  ],
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">=6.0.0"
+      },
+      "3.0.0": {
+        "cordova": ">=7.0.0"
+      },
+      "4.0.0": {
+        "cordova-android": ">=10.0.0"
+      }
+    }
+  },
+  "author": {
+    "name": "pwlin05@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moodlemobile/cordova-plugin-file-opener/issues"
+  },
+  "homepage": "https://github.com/moodlemobile/cordova-plugin-file-opener"
+}

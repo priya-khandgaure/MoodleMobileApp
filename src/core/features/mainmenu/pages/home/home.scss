@@ -1,0 +1,108 @@
+:host {ion-header {
+  position: relative;
+  overflow: visible;
+}
+
+ion-toolbar {
+  --background: transparent;
+  position: relative;
+}
+
+/* our gradient layer */
+ion-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #5735BD, #B42FC5);
+  z-index: -1;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12); /* Shadow effect */
+}
+
+ion-header::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 240px;
+  height: 240px;
+  background: #ffb7d9;
+  filter: blur(120px);
+  opacity: .55;
+  z-index: -1;
+}
+
+.welcome-section {
+  margin-bottom: 10px;
+  text-align: left;
+  flex: 1;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.welcome-section h2 {
+  margin-bottom: 5px !important;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  padding-left: 10px;
+  letter-spacing: 0.5px;
+}
+
+.welcome-section .item-greeting {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0.2rem 0 0;
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+}
+
+.welcome-section .item-greeting:hover {
+  transform: scale(1.05);
+}
+
+ion-back-button {
+  color: #4a148c;
+  font-weight: 600;
+}
+
+core-user-menu-button {
+  margin-right: 0.5rem;
+  --color: #4a148c;
+}
+
+core-tabs-outlet {
+  margin-top: 0.5rem;
+}
+
+core-empty-box {
+  margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-section h2 {
+    font-size: 1.05rem;
+  }
+
+  .welcome-section .item-greeting {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+}
+:host(.in-toolbar:not(.ion-color):not(.in-toolbar-color)) .button-native {
+    color: #ffffff;
+}

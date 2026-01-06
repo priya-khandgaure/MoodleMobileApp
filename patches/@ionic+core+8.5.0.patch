@@ -1,0 +1,276 @@
+diff --git a/node_modules/@ionic/core/components/ion-select.js b/node_modules/@ionic/core/components/ion-select.js
+index fe875d9..ff23640 100644
+--- a/node_modules/@ionic/core/components/ion-select.js
++++ b/node_modules/@ionic/core/components/ion-select.js
+@@ -186,7 +186,7 @@ const Select = /*@__PURE__*/ proxyCustomElement(class Select extends HTMLElement
+         const scrollSelectedIntoView = () => {
+             const indexOfSelected = this.childOpts.findIndex((o) => o.value === this.value);
+             if (indexOfSelected > -1) {
+-                const selectedItem = overlay.querySelector(`.select-interface-option:nth-child(${indexOfSelected + 1})`);
++                const selectedItem = overlay.querySelector(`.select-interface-option:nth-of-type(${indexOfSelected + 1})`);
+                 if (selectedItem) {
+                     /**
+                      * Browsers such as Firefox do not
+diff --git a/node_modules/@ionic/core/components/popover.js b/node_modules/@ionic/core/components/popover.js
+index df0b0f6..ffd1bac 100644
+--- a/node_modules/@ionic/core/components/popover.js
++++ b/node_modules/@ionic/core/components/popover.js
+@@ -763,8 +763,10 @@ const iosEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const arrowEl = root.querySelector('.popover-arrow');
+@@ -884,8 +886,10 @@ const mdEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const referenceSizeEl = trigger || ((_a = ev === null || ev === void 0 ? void 0 : ev.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (ev === null || ev === void 0 ? void 0 : ev.target);
+diff --git a/node_modules/@ionic/core/dist/cjs/ion-popover.cjs.entry.js b/node_modules/@ionic/core/dist/cjs/ion-popover.cjs.entry.js
+index c644264..175df2e 100644
+--- a/node_modules/@ionic/core/dist/cjs/ion-popover.cjs.entry.js
++++ b/node_modules/@ionic/core/dist/cjs/ion-popover.cjs.entry.js
+@@ -769,8 +769,10 @@ const iosEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = helpers.getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const arrowEl = root.querySelector('.popover-arrow');
+@@ -890,8 +892,10 @@ const mdEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = helpers.getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const referenceSizeEl = trigger || ((_a = ev === null || ev === void 0 ? void 0 : ev.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (ev === null || ev === void 0 ? void 0 : ev.target);
+diff --git a/node_modules/@ionic/core/dist/cjs/ion-select_3.cjs.entry.js b/node_modules/@ionic/core/dist/cjs/ion-select_3.cjs.entry.js
+index eccb0c4..e35156c 100644
+--- a/node_modules/@ionic/core/dist/cjs/ion-select_3.cjs.entry.js
++++ b/node_modules/@ionic/core/dist/cjs/ion-select_3.cjs.entry.js
+@@ -172,7 +172,7 @@ const Select = class {
+         const scrollSelectedIntoView = () => {
+             const indexOfSelected = this.childOpts.findIndex((o) => o.value === this.value);
+             if (indexOfSelected > -1) {
+-                const selectedItem = overlay.querySelector(`.select-interface-option:nth-child(${indexOfSelected + 1})`);
++                const selectedItem = overlay.querySelector(`.select-interface-option:nth-of-type(${indexOfSelected + 1})`);
+                 if (selectedItem) {
+                     /**
+                      * Browsers such as Firefox do not
+diff --git a/node_modules/@ionic/core/dist/collection/components/popover/animations/ios.enter.js b/node_modules/@ionic/core/dist/collection/components/popover/animations/ios.enter.js
+index 84b30ff..528af87 100644
+--- a/node_modules/@ionic/core/dist/collection/components/popover/animations/ios.enter.js
++++ b/node_modules/@ionic/core/dist/collection/components/popover/animations/ios.enter.js
+@@ -14,8 +14,10 @@ export const iosEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const arrowEl = root.querySelector('.popover-arrow');
+diff --git a/node_modules/@ionic/core/dist/collection/components/popover/animations/md.enter.js b/node_modules/@ionic/core/dist/collection/components/popover/animations/md.enter.js
+index 603923a..ff10a25 100644
+--- a/node_modules/@ionic/core/dist/collection/components/popover/animations/md.enter.js
++++ b/node_modules/@ionic/core/dist/collection/components/popover/animations/md.enter.js
+@@ -14,8 +14,10 @@ export const mdEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const referenceSizeEl = trigger || ((_a = ev === null || ev === void 0 ? void 0 : ev.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (ev === null || ev === void 0 ? void 0 : ev.target);
+diff --git a/node_modules/@ionic/core/dist/collection/components/select/select.js b/node_modules/@ionic/core/dist/collection/components/select/select.js
+index 51bc22a..68a5eb5 100644
+--- a/node_modules/@ionic/core/dist/collection/components/select/select.js
++++ b/node_modules/@ionic/core/dist/collection/components/select/select.js
+@@ -165,7 +165,7 @@ export class Select {
+         const scrollSelectedIntoView = () => {
+             const indexOfSelected = this.childOpts.findIndex((o) => o.value === this.value);
+             if (indexOfSelected > -1) {
+-                const selectedItem = overlay.querySelector(`.select-interface-option:nth-child(${indexOfSelected + 1})`);
++                const selectedItem = overlay.querySelector(`.select-interface-option:nth-of-type(${indexOfSelected + 1})`);
+                 if (selectedItem) {
+                     /**
+                      * Browsers such as Firefox do not
+diff --git a/node_modules/@ionic/core/dist/esm/input-shims-3070628a.js b/node_modules/@ionic/core/dist/esm/input-shims-3070628a.js
+index cc59b33..2c24dc3 100644
+--- a/node_modules/@ionic/core/dist/esm/input-shims-3070628a.js
++++ b/node_modules/@ionic/core/dist/esm/input-shims-3070628a.js
+@@ -340,7 +340,8 @@ const enableScrollAssist = (componentEl, inputEl, contentEl, footerEl, keyboardH
+     const focusOut = () => {
+         hasKeyboardBeenPresentedForTextField = false;
+         win === null || win === void 0 ? void 0 : win.removeEventListener('ionKeyboardDidShow', keyboardShow);
+-        componentEl.removeEventListener('focusout', focusOut);
++        // Patched: Attach focusin/focusout events to inputEl instead of componentEl to allow focusing buttons inside <ion-input>.
++        inputEl.removeEventListener('focusout', focusOut);
+     };
+     /**
+      * When the input is about to receive
+@@ -360,13 +361,15 @@ const enableScrollAssist = (componentEl, inputEl, contentEl, footerEl, keyboardH
+         }
+         jsSetFocus(componentEl, inputEl, contentEl, footerEl, keyboardHeight, addScrollPadding, disableClonedInput, platformHeight);
+         win === null || win === void 0 ? void 0 : win.addEventListener('ionKeyboardDidShow', keyboardShow);
+-        componentEl.addEventListener('focusout', focusOut);
++        // Patched: Attach focusin/focusout events to inputEl instead of componentEl to allow focusing buttons inside <ion-input>.
++        inputEl.addEventListener('focusout', focusOut);
+     };
+-    componentEl.addEventListener('focusin', focusIn);
++    // Patched: Attach focusin/focusout events to inputEl instead of componentEl to allow focusing buttons inside <ion-input>.
++    inputEl.addEventListener('focusin', focusIn);
+     return () => {
+-        componentEl.removeEventListener('focusin', focusIn);
++        inputEl.removeEventListener('focusin', focusIn);
+         win === null || win === void 0 ? void 0 : win.removeEventListener('ionKeyboardDidShow', keyboardShow);
+-        componentEl.removeEventListener('focusout', focusOut);
++        inputEl.removeEventListener('focusout', focusOut);
+     };
+ };
+ /**
+diff --git a/node_modules/@ionic/core/dist/esm/ion-item_8.entry.js b/node_modules/@ionic/core/dist/esm/ion-item_8.entry.js
+index 4b8d277..fc26329 100644
+--- a/node_modules/@ionic/core/dist/esm/ion-item_8.entry.js
++++ b/node_modules/@ionic/core/dist/esm/ion-item_8.entry.js
+@@ -109,7 +109,7 @@ const Item = class {
+     // inputs, then those need to individually get each click
+     hasCover() {
+         const inputs = this.el.querySelectorAll('ion-checkbox, ion-datetime, ion-select, ion-radio');
+-        return inputs.length === 1 && !this.multipleInputs;
++        return inputs.length === 1;
+     }
+     // If the item has an href or button property it will render a native
+     // anchor or button that is clickable
+diff --git a/node_modules/@ionic/core/dist/esm/ion-popover.entry.js b/node_modules/@ionic/core/dist/esm/ion-popover.entry.js
+index d32e60c..491c281 100644
+--- a/node_modules/@ionic/core/dist/esm/ion-popover.entry.js
++++ b/node_modules/@ionic/core/dist/esm/ion-popover.entry.js
+@@ -765,8 +765,10 @@ const iosEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const arrowEl = root.querySelector('.popover-arrow');
+@@ -886,8 +888,10 @@ const mdEnterAnimation = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const referenceSizeEl = trigger || ((_a = ev === null || ev === void 0 ? void 0 : ev.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (ev === null || ev === void 0 ? void 0 : ev.target);
+diff --git a/node_modules/@ionic/core/dist/esm/ion-select_3.entry.js b/node_modules/@ionic/core/dist/esm/ion-select_3.entry.js
+index 1eb51c3..0b889ab 100644
+--- a/node_modules/@ionic/core/dist/esm/ion-select_3.entry.js
++++ b/node_modules/@ionic/core/dist/esm/ion-select_3.entry.js
+@@ -168,7 +168,7 @@ const Select = class {
+         const scrollSelectedIntoView = () => {
+             const indexOfSelected = this.childOpts.findIndex((o) => o.value === this.value);
+             if (indexOfSelected > -1) {
+-                const selectedItem = overlay.querySelector(`.select-interface-option:nth-child(${indexOfSelected + 1})`);
++                const selectedItem = overlay.querySelector(`.select-interface-option:nth-of-type(${indexOfSelected + 1})`);
+                 if (selectedItem) {
+                     /**
+                      * Browsers such as Firefox do not
+diff --git a/node_modules/@ionic/core/hydrate/index.js b/node_modules/@ionic/core/hydrate/index.js
+index 6de5db2..ff80abd 100644
+--- a/node_modules/@ionic/core/hydrate/index.js
++++ b/node_modules/@ionic/core/hydrate/index.js
+@@ -24183,8 +24183,10 @@ const iosEnterAnimation$1 = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const arrowEl = root.querySelector('.popover-arrow');
+@@ -24304,8 +24306,10 @@ const mdEnterAnimation$1 = (baseEl, opts) => {
+     const { event: ev, size, trigger, reference, side, align } = opts;
+     const doc = baseEl.ownerDocument;
+     const isRTL = doc.dir === 'rtl';
+-    const bodyWidth = doc.defaultView.innerWidth;
+-    const bodyHeight = doc.defaultView.innerHeight;
++    // Patched: use document.body.clientXXX instead of doc.defaultView.innerXXXX because the latter doesn't return the correct
++    // dimensions when the `zoom` CSS property is being used.
++    const bodyWidth = document.body.clientWidth;
++    const bodyHeight = document.body.clientHeight;
+     const root = getElementRoot(baseEl);
+     const contentEl = root.querySelector('.popover-content');
+     const referenceSizeEl = trigger || ((_a = ev === null || ev === void 0 ? void 0 : ev.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (ev === null || ev === void 0 ? void 0 : ev.target);
+@@ -30118,7 +30122,8 @@ class Select {
+         const scrollSelectedIntoView = () => {
+             const indexOfSelected = this.childOpts.findIndex((o) => o.value === this.value);
+             if (indexOfSelected > -1) {
+-                const selectedItem = overlay.querySelector(`.select-interface-option:nth-child(${indexOfSelected + 1})`);
++
++                const selectedItem = overlay.querySelector(`.select-interface-option:nth-of-type(${indexOfSelected + 1})`);
+                 if (selectedItem) {
+                     /**
+                      * Browsers such as Firefox do not
+diff --git a/node_modules/@ionic/core/hydrate/index.mjs b/node_modules/@ionic/core/hydrate/index.mjs
+index 2a2b33d..65002bb 100644
+--- a/node_modules/@ionic/core/hydrate/index.mjs
++++ b/node_modules/@ionic/core/hydrate/index.mjs
+@@ -30114,7 +30114,7 @@ class Select {
+         const scrollSelectedIntoView = () => {
+             const indexOfSelected = this.childOpts.findIndex((o) => o.value === this.value);
+             if (indexOfSelected > -1) {
+-                const selectedItem = overlay.querySelector(`.select-interface-option:nth-child(${indexOfSelected + 1})`);
++                const selectedItem = overlay.querySelector(`.select-interface-option:nth-of-type(${indexOfSelected + 1})`);
+                 if (selectedItem) {
+                     /**
+                      * Browsers such as Firefox do not

@@ -1,0 +1,1 @@
+(self.webpackChunkapp=self.webpackChunkapp||[]).push([[73607],{73607:function(t){!void(t.exports=function(){"use strict";return function(t,e){e.prototype.weekday=function(t){var e=this.$locale().weekStart||0,u=this.$W,a=(u<e?u+7:u)-e;return this.$utils().u(t)?a:this.subtract(a,"day").add(t,"day")}}}())}}]);
